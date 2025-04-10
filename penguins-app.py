@@ -30,21 +30,18 @@ else:
         bill_depth_mm= st.sidebar.slider('Bill Depth(mm)', 13.1, 21.5, 17.2)
         flipper_length_mm = st.sidebar.slider('Flipper Length (mm)', 172.0, 231.0, 201.0)
         body_mass_g= st.sidebar.slider('Body Mass (g)', 2700.0, 6300.0, 4207.0)
-        data = {
-            'island': island,
-            'sex': sex,
-            'bill_length_mm': bill_length_mm,
-            'bill_depth_mm': bill_depth_mm,
-            'flipper_length_mm':flipper_length_mm,
-            'body_mass_g': body_mass_g
-        }
+        data = {'island': island,
+                'sex': sex,
+                'bill_length_mm': bill_length_mm,
+                'bill_depth_mm': bill_depth_mm,
+                'flipper_length_mm':flipper_length_mm,
+                'body_mass_g': body_mass_g}       
         features= pd.DataFrame(data, index=[0])
         return features
-
     input_df = user_input_features()
 
-penguin_raws = pd.read_csv(r'https://github.com/anishnair3091/penguins#:~:text=penguins_cleaned.csv')
-penguins= penguin_raws.drop('species', axis = 1)
+penguins_raw = pd.read_csv(r'https://github.com/anishnair3091/penguins#:~:text=penguins_cleaned.csv')
+penguins= penguins_raw.drop(columns=['species'], axis = 1)
 df = pd.concat([input_df, penguins], axis =0)
     
 encode= ['sex', 'island']
@@ -56,13 +53,13 @@ for col in encode:
 
 df = df[:1]
 
-st.write('The user input features')
+st.subheader('User input features')
 
 if uploaded_file is not None:
     st.write(df)
 
 else:
-    st.write('Awaiting the input file to be uploaded')
+    st.write('Awaiting the input file to be uploaded. Currently using example input parameters (shown below).')
     st.write(df)
 
 load_model = pickle.load(open('penguins_model.pkl', 'rb'))
