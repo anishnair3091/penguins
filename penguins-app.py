@@ -40,7 +40,7 @@ else:
         return features
     input_df = user_input_features()
 
-penguins_raw = pd.read_csv(r'https://github.com/anishnair3091/penguins#:~:text=penguins_cleaned.csv', on_bad_lines='skip')
+penguins_raw = pd.read_csv('https://github.com/anishnair3091/penguins/raw/refs/heads/main/penguins_cleaned.csv')
 penguins= penguins_raw.drop('species', axis = 1)
 df = pd.concat([input_df, penguins], axis =0)
     
