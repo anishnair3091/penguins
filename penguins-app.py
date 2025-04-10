@@ -41,7 +41,7 @@ else:
     input_df = user_input_features()
 
 penguins_raw = pd.read_csv(r'https://github.com/anishnair3091/penguins#:~:text=penguins_cleaned.csv', on_bad_lines='skip')
-penguins= penguins_raw.drop(columns=['species'], axis = 1)
+penguins= penguins_raw.drop('species', axis = 1)
 df = pd.concat([input_df, penguins], axis =0)
     
 encode= ['sex', 'island']
