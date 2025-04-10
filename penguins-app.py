@@ -12,7 +12,7 @@ This app predicts the **Palmer penguin** species!""")
 st.sidebar.header('User Input Features')
 
 st.sidebar.markdown("""
-[Example CSV input file]['/Users/anishmnair/Desktop/Streamlit/penguins/penguins_example.csv']""")
+[Example CSV input file]['https://github.com/anishnair3091/penguins#:~:text=penguins_example.csv']""")
 
 #Collect users input into Dataframe
 
